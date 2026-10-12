@@ -1342,6 +1342,14 @@ body:not(.benji) main > section { padding-top: 0 !important; }
 /* the prints: white mats like the weather art, three columns that fall into place by height */
 .prints { max-width: 940px; margin: 40px auto 0; padding: 0 var(--gutter); columns: 3 240px; column-gap: 24px; }
 .prints:not(:has(figure)) { display: none; }
+.prints figure { margin: 0 0 24px; break-inside: avoid; }
+/* fewer than three prints: one sits in the reading column, two share the width */
+.prints:has(figure:only-child) { max-width: calc(var(--col) + 2 * var(--gutter)); columns: 1; }
+.prints:has(figure:nth-child(2):last-child) { columns: 2 280px; }
+.prints img { display: block; width: 100%; height: auto; cursor: zoom-in;
+  background: #fff; padding: clamp(6px, 1vw, 11px); border-radius: 2px; box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 12px 28px -16px rgba(0, 0, 0, .38); }
+.prints figcaption { font: italic 400 14px/1.4 var(--serif); color: var(--soft); margin-top: 8px; }
 body:has(.photo-head) footer { margin-top: 72px; }
 .hl-bubble.wide { width: min(460px, calc(100vw - 24px)); } .hl-bubble.wide .hl-out { max-height: 34vh; }
 .hl-out { white-space: pre-line; }   /* keep the paragraph breaks of a longer selection */
